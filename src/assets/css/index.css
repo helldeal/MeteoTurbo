@@ -1,0 +1,599 @@
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --t: #3a3a3a;
+  --tmeteo: #ffffff;
+  --navbg:rgba( 255, 255, 255, 0.05 );
+  --navborder:rgba( 255, 255, 255, 0.18 );
+  --input: rgb(242, 242, 242);
+  --fuel: #FFCB45;
+  --meteo: #33DAFF;
+  --tfuel: #353535;
+  --underfuel: #ffffff4b;
+}
+
+[data-theme="dark"] {
+  --bg-color: #21232f;
+  --t: #e9e9ff;
+  --tmeteo: #e9e9ff;
+  --navbg:rgba( 33, 35, 47, 0.05 );
+  --navborder:rgba( 33, 35, 47, 0.18 );
+  --input: #2c2f3d;
+  --fuel: #2f324b;
+  --meteo: #2f324b;
+  --tfuel: #e9e9ff;
+  --underfuel: #ffffff11;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #ffffff31;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff1c;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ffffff31;
+  border-radius: 2px;
+}
+
+body {
+  background-color: var(--bg-color);
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto';
+  transition: background-color 500ms ease-in-out;
+  overflow-x: hidden;
+}
+.overflowHidden{
+  overflow: hidden;
+}
+.displayBlock{
+  display: block;
+}
+.displayNone{
+  display: none;
+}
+
+nav {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition-duration: 1s;
+  z-index: 1000;
+  background: var(--navbg);
+  backdrop-filter: blur( 3px );
+  -webkit-backdrop-filter: blur( 3px );
+  border-radius: 10px;
+  border: 1px solid var(--navborder);
+}
+
+p,h1{
+  margin: 0;
+}
+
+nav .iconMeteoTurbo {
+  height: 250px;
+  transition-duration: 0.5s;
+}
+
+nav .label {
+  margin-bottom: 5rem;
+  color: var(--t);
+  font-size: 87px;
+  font-weight: 700;
+  line-height: 0.9;
+  transition: all 0.5s;
+}
+
+nav .localisation {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  width: 80vw;
+  color: #e7e7e7;
+  transition-duration: 1s;
+}
+
+nav .localisation .smallIconMeteoTurbo {
+  transition: all 0.5s;
+}
+
+nav .localisation input:focus {
+  outline: none;
+  background-color: rgb(238, 238, 238);
+}
+
+nav .localisation input::placeholder {
+  color: #c9c9c9;
+}
+
+nav .localisation input {
+  border-radius: 100px;
+  border: none;
+  width: 100%;
+  background-color: var(--input);
+  transition: background-color 500ms ease-in-out;
+  padding: 25px;
+  color: #111111;
+  padding-left: 40px;
+  font-size: 35px;
+  font-weight: 600;
+  height: 50px;
+  opacity: 0.6;
+}
+
+nav .localisation div {
+background-color: var(--input);
+height: 75px;
+padding: 0.5rem;
+border-radius: 100px;
+cursor: pointer;
+transition: background-color 500ms ease-in-out;
+}
+
+nav .localisation div img {
+  height: 100%;
+}
+
+.popular {
+  padding: 1rem;
+  font-size: 1rem;
+  display: flex;
+  margin-left: -45%;
+  align-items: baseline;
+}
+
+.popular h1 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.popular button {
+  border: none;
+  background: none;
+}
+
+.popular button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  padding-bottom: 5rem;
+  transition-duration: 1s;
+}
+
+.nightswitch{
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  z-index: 1000;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.moon{
+  opacity: 0;
+}
+
+
+/* --------- GLOBAL WIDGET --------*/
+
+.content .widget{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 70vw;
+  padding: 20px;
+  border-radius: 40px;    
+  box-shadow: 17px 20px 40px rgba(0,0,0,.21);
+  transition: width 1s;
+}
+
+
+/* --------- METEO WIDGET --------*/
+.content .meteo2widget{
+  color: var(--tmeteo);
+  width: 70vw;
+  gap: 5%;
+  display: flex;
+  flex-direction: row;
+  transition: width 1s;
+}
+
+.content .img {
+  display: flex;
+  width: 30vw;
+  text-align: center;
+  justify-content: center;
+  padding: 0px;
+  border-radius: 40px;
+  position: relative;
+}
+
+.content .img > img{
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  object-fit: cover;
+}
+.content .img > h1{
+  position: absolute;
+  font-size: 50px;
+  margin: 0;
+  width: 100%;
+}
+
+.content .meteo{
+  background-color: var(--meteo);
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  transition: background-color 500ms ease-in-out, width 1s;
+  gap: 5px;
+}
+.content .meteo .today{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.content .meteo .today > div{
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.content .meteo .today > div img{
+  width: 100px;
+  height: 100px;
+}
+.content .meteo .today > div > p{
+  font-size: 40px;
+}
+.content .meteo .today > h1{
+  margin: 0;
+  font-size: 130px;
+}
+.content .meteo .nowdata{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  gap: 5px;
+}
+.content .meteo .nowdata > article{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.content .meteo .nowdata > article img{
+  height: 30px;
+}
+.content .meteo .nowdata > article p{
+  font-size: 24px;
+  text-align: center;
+}
+.content .meteo .meteohourslist{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 95%;
+  overflow-x: scroll;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.content .meteo .meteohourslist article{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+}
+.content .meteo .meteodaylist{
+  display: flex;
+  overflow-x: scroll;
+  flex-direction: row;
+  width: 95%;
+  gap: 30px;
+  text-align: center;
+}
+.content .meteo .meteodaylist article{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+}
+.content .meteo .meteodaylist article p span{
+  color: #d5d5d5;
+}
+
+
+
+/* --------- FUEL WIDGET --------*/
+
+.content .fuel{
+  background-color: var(--fuel);
+  transition: background-color 500ms ease-in-out, width 1s;
+}
+
+.content .titleFuel{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 40px;
+  font-weight:500;
+  padding-bottom: 20px;
+}
+
+.content .titleFuelCity{
+  color: white;
+  font-weight: 600;
+  gap: 20px;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: row;
+  text-align: start;
+  align-items: center;
+  justify-content: center;
+}
+.content .titleFuelCity .logoFuel{
+  width: max-content;
+}
+.content .titleFuelCity img{
+  width: 100px;
+  height:  100px;
+}
+
+.content .dropDown-content{
+  border: none;
+  outline: none;
+  background-color:#ffffff00;
+  color: white;
+  font-size: 30px;
+  width: 100%;
+}
+.content .dropDownMenu{
+  justify-content: center;
+  align-items: center;
+}
+.content .typeFuel{
+  display: flex;
+  flex-direction: column;
+  border: none;
+  background-color: var(--underfuel);
+  transition: background-color 500ms ease-in-out;
+  border-radius: 30px;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  padding: 10px;
+  color: var(--tfuel);
+  outline: none;
+  height: max-content;
+}
+.content .fuelList{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: var(--underfuel);
+  transition: background-color 500ms ease-in-out;
+}
+.content .fuelList article{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: 70px;
+  padding: 0px 20px;
+  margin: 10px 0px;
+  background-color: var(--underfuel);
+  transition: background-color 500ms ease-in-out;
+  border-radius: 40px;
+  color: var(--tfuel);
+  font-size: 25px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.content option{
+  color: var(--tfuel);
+}
+
+.content .typeFuelContener, .content .price, .content .type, .content .dist{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--tfuel);
+  transition: all 500ms ease-in-out;
+}
+.content  .typeFuelContener{
+  color: #353535;
+  width: 15%;
+}
+.content  .price{
+  width: 20%;
+}
+.content  .type{
+  width: 55%;
+}
+.content  .dist{
+  width: 10%;
+}
+
+
+.SP95,.SP98,.Gazole,.E10,.E85,.GPLc{
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  align-self: center;
+  border-radius: 100px;
+}
+.SP98, .SP95{
+  background-color: #4c9c43;
+}
+
+.Gazole{
+  background-color: #ebdf3f;
+
+}
+
+.E10{
+  background-color: #3dbe45;
+}
+
+.E85{
+  background-color: #7acddb;
+}
+
+.GPLc{
+  background-color: #6f9ad1;
+}
+
+
+
+/* --------- FUEL MODAL --------*/
+
+
+.content .modal{
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  height: 200%;
+  overflow: auto;
+  background-color: #00000025;
+  color: var(--tfuel);
+  transition: color 500ms ease-in-out;
+}
+.content .modalContent{
+  position: fixed;
+  left: 13%;
+  right: 13%;
+  top: 60%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-self: center;
+  padding: 20px;
+  background-color: var(--fuel);
+  transition: background-color 500ms ease-in-out;
+  border-radius: 40px;
+  box-shadow: 17px 20px 40px rgba(0,0,0,.21);
+}
+
+.modal .modalRightSide{
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 30% ;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal .modalDistance{
+  padding: 10px;
+  font-size: 45px;
+  font-weight: 600;
+}
+.modal .modalClose{
+  width: max-content;
+  font-size: 30px;
+  padding: 4px 10px;
+  border-radius: 300px;
+  background-color: #f64c1d;
+  cursor: pointer;
+}
+.modal .modalLocalisation{
+  display: flex;
+  align-self: flex-end;
+  width: max-content;
+  font-size: 30px;
+  padding: 10px 20px;
+  border-radius: 300px;
+  background-color: rgba(255, 255, 255, 0.22);
+}
+.modal .modalLocalisation a{
+  text-decoration: none;
+  color: var(--tfuel);
+  transition: color 500ms ease-in-out;
+}
+.modal .modalLeftSide{
+  width: 70% ;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal .modalTitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 45px;
+  font-weight:500;
+}
+
+.modal .modalFuelBoard{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px;
+}
+.modal .modalFuelLabel{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+.modal .modalFuelLabel a{
+  padding: 0px 20px;
+  font-size: 30px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.499);
+}
+
+.modal .modalFuelBoardContent{
+  display: flex;
+  width: 100%;
+  margin: 10px;
+  flex-direction: row;
+  border-radius: 40px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff2a;
+}
+.modal .modalFuel{
+  font-size: 40px;
+  color: var(--tfuel);
+  transition: color 500ms ease-in-out;
+  padding: 10px;
+  font-weight: 500;
+}
