@@ -11,7 +11,7 @@ MétoTurbo est une application web innovante qui facilite l'accès aux informati
 - React : Une bibliothèque JavaScript moderne pour la construction d'interfaces utilisateur dynamiques et réactives.
 
 #### Versions disponibles:
-- Version web (disponible sur GitHub) : Cette version utilise React pour une expérience utilisateur fluide et réactive. Profitez de toutes les fonctionnalités de MétoTurbo depuis votre navigateur préféré.
-- Version mobile (non disponible sur GitHub) : Pour une expérience mobile optimale, nous avons développé une version dédiée utilisant Kotlin et Android Studio. Téléchargez-la depuis votre magasin d'applications préféré pour une utilisation sur le pouce.
+- Version web (disponible sur GitHub) : Cette version utilise React pour une expérience utilisateur fluide et réactive.
+- Version mobile (non disponible sur GitHub) : Pour une expérience mobile optimale, nous avons développé une version dédiée utilisant Kotlin et Android Studio.
 
 MétoTurbo simplifie la planification de vos déplacements en combinant les informations sur les stations d'essence et la météo locale dans une seule application intuitive. Découvrez la puissance de MétoTurbo dès aujourd'hui ! 🚀
